@@ -1,0 +1,46 @@
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+      $width: map_get($breakpoints, $width);
+      @if $type == max {
+          $width: $width - 1px;
+      }
+      @if $type == min {
+        $width: $width + 1px;
+      }
+      @media only screen and (#{$type}-width: $width) {
+          @content;
+      }
+  }
+}
+
+
+@mixin theme($arg: theme) {
+  $array: $themes;
+  $prefix: theme;
+
+  @if ($arg == theme) {
+    $array: $themes;
+    $prefix: theme;
+  } @else {
+    $array: $color-schemes;
+    $prefix: color;
+  }
+
+  @each $theme, $map in $array {
+    .#{$prefix}-#{$theme} & {
+      $array-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($array, $theme), '#{$key}');
+        $array-map: map-merge($array-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $array-map: null !global;
+    }
+  }
+}
+
+
+@function value($key) {
+  @return map-get($array-map, $key);
+}

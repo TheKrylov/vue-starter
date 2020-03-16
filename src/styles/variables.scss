@@ -1,0 +1,25 @@
+@import "mixins";
+
+// Breakpoints for mq
+$breakpoints: (
+    "xs":  460px,
+    "sm":  768px,
+    "md":  1023px,
+    "lm":  1160px,
+    "lg":  1259px,
+    "lx":  1460px,
+    "xl":  1620px,
+    "xxl": 1880px,
+);
+
+// Шрифты
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-size: 14px;
+
+
+$max-width: 1800px;
+
+// Colors
+$color-main: #FFF;
+
+
